@@ -1,6 +1,6 @@
 function Footer(){
     return(
-        <div> 
+        <footer> 
           <a href="">Terms</a>
           <a href="">Privacy</a>
           <a href="">Sitemap</a>
@@ -24,7 +24,7 @@ function Footer(){
           </svg> </a>
        
           <p>Copyright &copy; 2022 UAE Bank (P.J.S.C.) is licensed by the Central Bank of the UAE.</p>
-        </div>
+        </footer>
     )
 }
 export default Footer;

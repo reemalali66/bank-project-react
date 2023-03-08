@@ -1,23 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Footer from './Footer';
-import Header from './Header';
 import './index.css';
-import Section1 from './Section1';
-import Section2 from './Section2';
-
-
+import LandingPage from './pages/LandingPage';
+import SignupPage from './pages/SignupPage';
+import Dashboard from './pages/Dashboard';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>  
- <>
-<Header/>
-<Section1/>
-<Section2/>
-<Footer/>
- </>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Routes>
+        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/signup' element={<SignupPage/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
+    </Routes>
+   </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
