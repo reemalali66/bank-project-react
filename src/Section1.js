@@ -4,6 +4,7 @@ import atm from "./images/atm.webp"
 import online1 from "./images/online1.png"
 import shopping1 from "./images/shopping1.png"
 import sms1 from "./images/sms1.webp"
+import { Link } from "react-router-dom"
 function Section1(){
     return(
         <div id='parent'>
@@ -14,7 +15,7 @@ function Section1(){
               <input id="Password" type="text" required placeholder="Password"/>
               <br/>
               <input type="checkbox"/> Save User ID<br/>
-              <button id="loginbutton">Log In</button><br/>
+              <Link to ='/dashboard'><button id="loginbutton">Log In</button></Link><br/>
               <a href="" class ="logInA"> Forgot ID/ Password ? </a><br/>
               <a href="" class ="logInA"> Security & Help  </a>
             </div>
