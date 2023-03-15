@@ -3,6 +3,7 @@ import './signup.js';
 import Header from './../Header';
 import Footer from './../Footer';
 import Accounts from './signup.js';
+import chatbox2 from './../images/chatbox2.png'
 
 function SignupPage (){
   
@@ -123,8 +124,9 @@ function SignupPage (){
                             </div>
                             </div>
                         </section>
-                        <Accounts/>
+                        <Accounts/>       
                         <Footer/>
+                        <img id="chatbot" src={chatbox2} alt=""/>
                         </>
                         );
                         }

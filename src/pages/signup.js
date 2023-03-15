@@ -4,7 +4,7 @@ let allAccounts = [
         id: 1,
         name: "Current Account",
         accounttype: "It's the account that's as flexible as you need it to be.",
-        image: "current.webp"
+        image: "./images/current.webp"
        
     },
     {
@@ -18,31 +18,28 @@ let allAccounts = [
         id: 3,
         name: "Minor Account",
         accounttype:"Simple, fun and designed for tomorrow, open a Minor account for your child today.",
-        image: "minor.webp"
+        image: "src('../images/minor.webp')"
     }
 ];
 
-let content = ``;
+let content = [];
 
 allAccounts.forEach(account => {
-    account = `<div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                        style="background-image: url('${account.image}');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">${account.name}</h3>
-                            <p>  ${account.accounttype}</p>
-                            <p id="p_${account.id}"></p>
+    content.push(
+        <div className="col">
+                    <div className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                       >
+                        <div className="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{account.name}</h3>
+                            <p>  {account.accounttype}</p>
+                            <p id="p_{account.id}"></p>
                             <button id="lmore" > Learn More</button>
-                           
-                          
-                           
-                            
                         </div>
                     </div>
-            </div>`;
-    content += account;
+            </div>
+    ); 
 });
-return content;
+return <div id="cardFlex">{content}</div>;
 }
 export default Accounts;
 

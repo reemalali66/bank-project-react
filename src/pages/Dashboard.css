@@ -2,20 +2,19 @@ body{
     font-family:Abadi;
     color: #694545;
 }
-section{
+#dashboard{
     display: grid;
     grid-template-columns: 20% 80%;
 }
 
 #leftMenu{
-    background-color: #e1e9f0;
+    background-color: #c8d5e2;
     color: wheat;
     text-align: center;
 }
 #rightContent{
-    background-image:url(../images/bg2.jpg) ;  
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #e1e9f0;
+
 }
 #rightContent button{
     border: none;
@@ -24,7 +23,7 @@ section{
     border-radius: 10px;
 }
 #rightContent button:hover{
-    background-color: #868585;
+    background-color: #694545;
     color: white;
 }
 #btn1{
@@ -32,11 +31,11 @@ padding: 20px 90px;
 border: none;
 }
 #btn2{
-    padding: 20px 117px;
+    padding: 20px 116px;
     border: none;
 }
 #btn3{
-    padding: 20px 121px;
+    padding: 20px 120px;
     border: none;
 }
 .btn{
@@ -44,10 +43,10 @@ border: none;
     font-weight: bold;
     color: #694545;
     font-family:Abadi;
-    background-color: #e1e9f0;
+    background-color: #c8d5e2;;
 }
 .btn:hover{
-    background-color: #868585;
+    background-color: #7c6d6d;
     color: white;
 }
 #AyCard{

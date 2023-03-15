@@ -24,6 +24,7 @@ body{
   display: flex;
   padding: 20px;
   justify-content: space-evenly;
+ 
 }
 #right{
   display: flex;
@@ -63,9 +64,7 @@ button:hover{
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 20px;
-  font-family:Abadi;
-  
-  
+  font-family:Abadi; 
 }
 
 .child img{
@@ -73,9 +72,12 @@ button:hover{
   height: 250px;
 }
 .child:hover{
-  background-color: #dbd8d8a1;
+  background-color: #cececea1;
   color: #694545;
   
+}
+.child button{
+  border-radius: 10px;
 }
 
 
@@ -108,7 +110,8 @@ padding: 40px;
 }
 
 .logInForm button{
-  padding: 5px 70px;
+  padding: 5px 77px;
+  
 }
 .logInForm a{
   font-size: smaller;

@@ -1,17 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Navigate } from "react-router-dom";
+
+
 class LoginForm extends React.Component{
 
     constructor(){
         super();
         this.state={
+            users:[],
             userName:"",
             errorMessageU:"",
             userPassword:"",
             errorMessageP:"",
+            accountMessage:""
         }
     }
 
     validateUser = (e) => {
+        this.setState({userName:e.target.value});
         if(e.target.value.length<10){
             this.setState({
                 errorMessageU:"At least 10 characters needed"
@@ -23,17 +31,36 @@ class LoginForm extends React.Component{
         }
     }
 
-    render(){
-        return(
-            <form>
-                <input type="text" placeholder="Your name here" name="userName" onChange={this.validateUser}/>
-                <p>{this.state.errorMessage}</p>
-                <input type="submit"/>
-            </form>
+
+    componentDidMount(){
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(
+            res=> {
+                let tempData = res.data;
+                this.setState({ users:tempData});
+            }
         );
+    }
+    authenticateUser = (e)=>{
+        e.preventDefault();
+        
+        let flag=0;
+        this.state.users.forEach(user => {
+            if(user.email==this.state.userName && user.address.suite==this.state.userPassword){
+                flag=1;
+            }
+        });
+        if(flag==1){
+            this.setState({accountMessage:"Valid details"});
+            window.location.href = '/dashboard';
+            }
+        else{
+            this.setState({accountMessage:"Invalid details"});
+            }   
     }
 
     validatePassword = (e) => {
+        this.setState({userPassword:e.target.value});
         if(e.target.value.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")){
             this.setState({
                 errorMessageU:"Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -45,12 +72,34 @@ class LoginForm extends React.Component{
         }
     }
     render(){
+        // <form action="" method="get" class="form-example" >
+        //     <div class="logInForm" > 
+        //       <input id="userID" type="text" required placeholder="User ID"/>
+        //       <br/>
+        //       <input id="Password" type="password" required placeholder="Password" onChange={(e)=>{
+        //                 this.setState({userpassword:e.target.value})
+        //             }}/>
+        //       <br/>
+        //       <input type="checkbox"/> Save User ID<br/>
+        //       <button id="loginbutton">Log In</button><br/>
+        //       <a href="" class ="logInA"> Forgot ID/ Password ? </a><br/>
+        //       <a href="" class ="logInA"> Security & Help  </a>
+        //     </div>
+        //   </form>
         return(
-            <form>
-                <input type="text" placeholder="Your password here" name="userPassword" onChange={this.validatePassword}/>
+            <div class="logInForm" > 
+            <form onSubmit={this.authenticateUser} action="#" class="form-example">
+            <input id="userID" type="text" required placeholder="User ID" onChange={this.validateUser}/>
                 <p>{this.state.errorMessageU}</p>
-                <input type="submit"/>
+                <input id="Password" type="password" required placeholder="Password" onChange={this.validatePassword}/>
+                <p>{this.state.errorMessageU}</p>
+                <input type="checkbox"/> Save User ID<br/>
+                <input id="loginbutton" type="submit" value="Login"/>
+                <p>{this.state.accountMessage}</p>
             </form>
+            <a href="" class ="logInA"> Forgot ID/ Password ? </a><br/>
+               <a href="" class ="logInA"> Security & Help  </a>
+            </div>
         );
     }
 }

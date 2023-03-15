@@ -1,11 +1,11 @@
-import current from "../src/images/mbanking.PNG"
+import current from "current.webp"
 
 allAccounts = [
     {
         id: 1,
         name: "Current Account",
         accounttype: "It's the account that's as flexible as you need it to be.",
-        image: "current.webp"
+        image: {current}
        
     },
     {
@@ -28,7 +28,7 @@ content = ``;
 allAccounts.forEach(account => {
     account = `<div class="col">
                     <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                        style="background-image: url('${account.image}');">
+                        style= {{backgroundImage: 'url(${current})'}};>
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                             <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">${account.name}</h3>
                             <p>  ${account.accounttype}</p>

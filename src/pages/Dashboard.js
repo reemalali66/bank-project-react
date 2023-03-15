@@ -4,6 +4,7 @@ import ApplyCard from "./ApplyCard";
 import Currency from "./Currency";
 import DashMenu from "./DashMenu";
 import './Dashboard.css';
+import chatbox2 from './../images/chatbox2.png'
 
 function Dashboard(){
     return(
@@ -17,6 +18,7 @@ function Dashboard(){
         </div>
         </section>
       <Footer/>
+      <img id="chatbot" src={chatbox2} alt=""/>
       </>
     )
 }

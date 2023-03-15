@@ -4,7 +4,7 @@ import CardImage from './../images/card.PNG';
 class ApplyCard extends React.Component {
     
     state = {
-        UserName:"User Name",
+        UserName:"",
         
     }
 

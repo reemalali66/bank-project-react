@@ -5,21 +5,11 @@ import online1 from "./images/online1.png"
 import shopping1 from "./images/shopping1.png"
 import sms1 from "./images/sms1.webp"
 import { Link } from "react-router-dom"
+import LoginForm from "./LoginForm"
 function Section1(){
     return(
         <div id='parent'>
-               <form action="" method="get" class="form-example">
-            <div class="logInForm" > 
-              <input id="userID" type="text" required placeholder="User ID"/>
-              <br/>
-              <input id="Password" type="text" required placeholder="Password"/>
-              <br/>
-              <input type="checkbox"/> Save User ID<br/>
-              <Link to ='/dashboard'><button id="loginbutton">Log In</button></Link><br/>
-              <a href="" class ="logInA"> Forgot ID/ Password ? </a><br/>
-              <a href="" class ="logInA"> Security & Help  </a>
-            </div>
-          </form>
+               <LoginForm/>
       
 
            <div id="right">
