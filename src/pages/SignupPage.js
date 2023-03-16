@@ -48,6 +48,7 @@ class SignupPage extends React.Component{
             res=>{
               console.log(res);
                 console.log(res.data);
+                window.location.href='/';
             }    
         );
   }
@@ -158,7 +159,7 @@ render(){
                                 
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <Link to ='/'><button type="submit" class="btn btn-primary">SUBMIT</button></Link>
+                                    <button type="submit" class="btn btn-primary">SUBMIT</button>
                                   </div>
                               
                                 </form>
