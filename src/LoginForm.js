@@ -33,7 +33,7 @@ class LoginForm extends React.Component{
 
 
     componentDidMount(){
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('https://crudcrud.com/api/a6d087ea01ba4b9682e19885fa018749/users')
         .then(
             res=> {
                 let tempData = res.data;
@@ -46,7 +46,7 @@ class LoginForm extends React.Component{
         
         let flag=0;
         this.state.users.forEach(user => {
-            if(user.email==this.state.userName && user.address.suite==this.state.userPassword){
+            if(user.userEmail==this.state.userName && user.Telephone==this.state.userPassword){
                 flag=1;
             }
         });
@@ -59,18 +59,18 @@ class LoginForm extends React.Component{
             }   
     }
 
-    validatePassword = (e) => {
-        this.setState({userPassword:e.target.value});
-        if(e.target.value.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")){
-            this.setState({
-                errorMessageU:"Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-            });
-        } else{
-            this.setState({
-                errorMessageU:""
-            });
-        }
-    }
+    // validatePassword = (e) => {
+    //     this.setState({userPassword:e.target.value});
+    //     if(e.target.value.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")){
+    //         this.setState({
+    //             errorMessageU:"Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+    //         });
+    //     } else{
+    //         this.setState({
+    //             errorMessageU:""
+    //         });
+    //     }
+    // }
     render(){
         // <form action="" method="get" class="form-example" >
         //     <div class="logInForm" > 

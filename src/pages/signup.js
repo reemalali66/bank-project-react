@@ -1,24 +1,28 @@
+import currentImage from './../images/current.webp';
+import savingImage from './../images/saving.webp';
+import minorImage from './../images/minor.webp';
+
 function Accounts(){
 let allAccounts = [
     {
         id: 1,
         name: "Current Account",
         accounttype: "It's the account that's as flexible as you need it to be.",
-        image: "./images/current.webp"
+        image:currentImage
        
     },
     {
         id: 2,
         name: "Saving Account",
         accounttype:"It's the savings account you can open, operate and manage from the comfort of home.",
-        image: "saving.webp"
+        image: savingImage
        
     },
     {
         id: 3,
         name: "Minor Account",
         accounttype:"Simple, fun and designed for tomorrow, open a Minor account for your child today.",
-        image: "src('../images/minor.webp')"
+        image: minorImage
     }
 ];
 
@@ -27,8 +31,7 @@ let content = [];
 allAccounts.forEach(account => {
     content.push(
         <div className="col">
-                    <div className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                       >
+                    <div className="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style= {{backgroundImage: `url(${account.image})`}} >
                         <div className="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                             <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{account.name}</h3>
                             <p>  {account.accounttype}</p>
@@ -59,11 +62,3 @@ export default Accounts;
 //         }
 
 //  }
-
-
-
-
-
-
-
-

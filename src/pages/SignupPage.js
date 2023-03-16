@@ -1,11 +1,58 @@
+import React from "react";
 import './SignupPage.css';
 import './signup.js';
 import Header from './../Header';
 import Footer from './../Footer';
 import Accounts from './signup.js';
 import chatbox2 from './../images/chatbox2.png'
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-function SignupPage (){
+class SignupPage extends React.Component{
+  state={
+    accountType:'',
+    gender:'',
+    firstName:'',
+    lastName:'',
+    Telephone:'',
+    userEmail:'',
+    Date:'',
+    cityO:'',
+    country:'',
+    country2:'',
+    canvasS:''
+  }
+
+  storeUserData = (e)=>{
+    e.preventDefault();
+
+    let newUser = {
+      accountType:this.state.accountType,
+      gender:this.state.gender,
+      firstName:this.state.firstName,
+      lastName:this.state.lastName,
+      Telephone:this.state.Telephone,
+      userEmail:this.state.userEmail,
+      Date:this.state.Date,
+      cityO:this.state.cityO,
+      country:this.state.country,
+      country2:this.state.country2,
+      canvasS:this.state.canvasS
+    }
+
+    console.log(newUser);
+
+    
+    axios.post('https://crudcrud.com/api/a6d087ea01ba4b9682e19885fa018749/users', {newUser})
+        .then(
+            res=>{
+              console.log(res);
+                console.log(res.data);
+            }    
+        );
+  }
+
+render(){
   
     return (
       <>
@@ -31,11 +78,11 @@ function SignupPage (){
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form action="#" method="POST" name="loginForm" onsubmit="validateForm()">
+                  <form action="#" method="POST" name="loginForm" onSubmit={this.storeUserData}>
                     <h3> Account Type</h3>
                     <label for="accType">Account Type : </label>
                     <br />
-                    <select>
+                    <select name="accountType" onChange={(e)=>{this.setState({accountType:e.target.value})}}>
                       <option>Current Account</option>
                       <option>Saving Account</option>
                       <option>Minor Account</option>
@@ -47,37 +94,37 @@ function SignupPage (){
 
 
                     <label for="userGender">Gender: </label><br />
-                    <input type="radio" id="M" name="gender" value="Male" checked /> Male
-                    <input type="radio" id="F" name="gender" value="Female" /> Female <br />
+                    <input type="radio" id="M" name="gender" value="Male" checked onSelect={(e)=>{this.setState({gender:e.target.value})}}/> Male
+                    <input type="radio" id="F" name="gender" value="Female" onSelect={(e)=>{this.setState({gender:e.target.value})}} /> Female  <br />
 
                     <br />
                     <label for="username">Name : </label>
                     <br />
                     <div id="uName">
-                      <input name="firstName" id="firstname" type="text" minlength="3" required placeholder="First Name " /><br />
+                      <input name="firstName" id="firstname" type="text" minlength="3" required placeholder="First Name " onChange={(e)=>{this.setState({firstName:e.target.value})}} /><br />
                       <p id="firstNameError"></p>
-                      <input name="lastName" id="lastname" type="text" required placeholder="Last Name" /><br />
+                      <input name="lastName" id="lastname" type="text" required placeholder="Last Name" onChange={(e)=>{this.setState({lastName:e.target.value})}}/><br />
                       <p id="lastNameError"></p>
                     </div>
                     <br />
                     <label for="userPhone">Phone number : </label>
                     <br />
-                    <input name="Telephone" type="tel" pattern="[0-9]{12}" minlength="12" maxlength="12" placeholder="(971xxxxxxxxxx)" required /><br />
+                    <input name="Telephone" type="tel" pattern="[0-9]{12}" minlength="12" maxlength="12" placeholder="(971xxxxxxxxxx)" required onChange={(e)=>{this.setState({Telephone:e.target.value})}} /><br />
                     <p id="userPhoneError"></p>
                     <br />
                     <label for="useremail">Email : </label>
                     <br />
-                    <input name="userEmail" id="userEmail" type="email" required placeholder="Email" /><br />
+                    <input name="userEmail" id="userEmail" type="email" required placeholder="Email" onChange={(e)=>{this.setState({userEmail:e.target.value})}}/><br />
                     <p id="userEmailError"></p>
                     <br />
                     <label for="DOB">Date of Birth : </label>
                     <br/>
-                    <input id="DOB" name="Date" onchange="checkDate()" type="date" required /><br />
+                    <input id="DOB" name="Date" onchange="checkDate()" type="date" required onChange={(e)=>{this.setState({Date:e.target.value})}} /><br />
                     <p id="DateError"></p>
                     <br/>
                       <label for="userCity">City : </label>
                       <br/>
-                        <select>
+                        <select name="cityO" onChange={(e)=>{this.setState({cityO:e.target.value})}}>
                           <option>Abu Dhabi</option>
                           <option>Dubai</option>
                           <option>Sharjah</option>
@@ -89,17 +136,13 @@ function SignupPage (){
                         <br/>
 
                           <label for="userCoun">Nationality : </label><br/>
-                            <input type="radio" id="1" name="country" value="UAE" checked /> UAE National
-                            <input type="radio" id="2" name="country" value="Other" /> Other <br />
+                            <input type="radio" id="1" name="country" value="UAE" checked onSelect={(e)=>{this.setState({gender:e.target.value})}} /> UAE National
+                            <input type="radio" id="2" name="country" value="Other" onSelect={(e)=>{this.setState({gender:e.target.value})}}/> Other <br />
 
-                            <input name="country" id="country" type="text" required placeholder="Enter your country " /><br />
-
-
-
-
-                            <br/>
-                              <div>
-                                <canvas id="mycanvas" width="400px" height="400px"></canvas>
+                            <input name="country2" id="country" type="text" required placeholder="Enter your country " onChange={(e)=>{this.setState({country2:e.target.value})}} /><br />      
+                             <br/>
+                             <div>
+                                <canvas name="canvasS" id="mycanvas" width="400px" height="400px" onChange={(e)=>{this.setState({canvasS:e.target.value})}}></canvas>
                                 <br/>
                                   <input class="input" id="download" type="submit" value="SAVE AS IMAGE" />
                                   <input class="input" id="clear" type="submit" value="CLEAR PAD" />
@@ -115,7 +158,7 @@ function SignupPage (){
                                 
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">SUBMIT</button>
+                                    <Link to ='/'><button type="submit" class="btn btn-primary">SUBMIT</button></Link>
                                   </div>
                               
                                 </form>
@@ -130,4 +173,5 @@ function SignupPage (){
                         </>
                         );
                         }
+                      }
                         export default SignupPage;
