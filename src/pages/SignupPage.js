@@ -83,10 +83,11 @@ render(){
                     <h3> Account Type</h3>
                     <label for="accType">Account Type : </label>
                     <br />
-                    <select name="accountType" onChange={(e)=>{this.setState({accountType:e.target.value})}}>
-                      <option>Current Account</option>
-                      <option>Saving Account</option>
-                      <option>Minor Account</option>
+                    <select name="accountType"  onChange={(e)=>{this.setState({accountType:e.target.value})}} >
+                      <option selected disabled>Choose Account Type</option>
+                      <option value="Current Account" defaultChecked={()=> {this.setState({accountType:"Current Account"})}} onClick={(e)=>{this.setState({accountType:e.target.value})}}>Current Account</option>
+                      <option value="Saving Account" defaultChecked={()=> {this.setState({accountType:"Saving Account"})}} onClick={(e)=>{this.setState({accountType:e.target.value})}} >Saving Account</option>
+                      <option value="Minor Account" defaultChecked={()=> {this.setState({accountType:"Minor Account"})}} onClick={(e)=>{this.setState({accountType:e.target.value})}}>Minor Account</option>
                     </select><br />
                     <br />
                     <hr />
@@ -95,8 +96,8 @@ render(){
 
 
                     <label for="userGender">Gender: </label><br />
-                    <input type="radio" id="M" name="gender" value="Male" checked onSelect={(e)=>{this.setState({gender:e.target.value})}}/> Male
-                    <input type="radio" id="F" name="gender" value="Female" onSelect={(e)=>{this.setState({gender:e.target.value})}} /> Female  <br />
+                    <input type="radio" id="M" name="gender" value="Male" defaultChecked={()=> {this.setState({gender:"Male"})}} onClick={(e)=>{this.setState({gender:e.target.value})}}/> Male
+                    <input type="radio" id="F" name="gender" value="Female" defaultChecked={()=> {this.setState({gender:"Female"})}} onClick={(e)=>{this.setState({gender:e.target.value})}} /> Female  <br />
 
                     <br />
                     <label for="username">Name : </label>
@@ -125,20 +126,21 @@ render(){
                     <br/>
                       <label for="userCity">City : </label>
                       <br/>
-                        <select name="cityO" onChange={(e)=>{this.setState({cityO:e.target.value})}}>
-                          <option>Abu Dhabi</option>
-                          <option>Dubai</option>
-                          <option>Sharjah</option>
-                          <option>Ajman</option>
-                          <option>Umm AlQuwain</option>
-                          <option>Ras Al Khaimah</option>
-                          <option>Fujairah</option>
+                        <select name="cityO" onClick={(e)=>{this.setState({cityO:e.target.value})}}>
+                        <option selected disabled>Select your city</option>
+                          <option value="Abu Dhabi" defaultChecked={()=> {this.setState({cityO:"Abu Dhabi"})}} onClick={(e)=>{this.setState({cityO:e.target.value})}}>Abu Dhabi</option>
+                          <option value="Dubai" defaultChecked={()=> {this.setState({cityO:"Dubai"})}} onClick={(e)=>{this.setState({cityO:e.target.value})}}>Dubai</option>
+                          <option value="Sharjah" defaultChecked={()=> {this.setState({cityO:"Sharjah"})}} onClick={(e)=>{this.setState({cityO:e.target.value})}}>Sharjah</option>
+                          <option value="Ajman" defaultChecked={()=> {this.setState({cityO:"Ajman"})}} onClick={(e)=>{this.setState({cityO:e.target.value})}}>Ajman</option>
+                          <option value="Umm AlQuwain" defaultChecked={()=> {this.setState({cityO:"Umm AlQuwain"})}} onClick={(e)=>{this.setState({cityO:e.target.value})}}>Umm AlQuwain</option>
+                          <option value="Ras Al Khaimah" defaultChecked={()=> {this.setState({cityO:"Ras Al Khaimah"})}} onClick={(e)=>{this.setState({cityO:e.target.value})}}>Ras Al Khaimah</option>
+                          <option value="Fujairah" defaultChecked={()=> {this.setState({cityO:"Fujairah"})}} onClick={(e)=>{this.setState({cityO:e.target.value})}}>Fujairah</option>
                         </select><br/>
                         <br/>
 
                           <label for="userCoun">Nationality : </label><br/>
-                            <input type="radio" id="1" name="country" value="UAE" checked onSelect={(e)=>{this.setState({gender:e.target.value})}} /> UAE National
-                            <input type="radio" id="2" name="country" value="Other" onSelect={(e)=>{this.setState({gender:e.target.value})}}/> Other <br />
+                            <input type="radio" id="1" name="country" value="UAE" defaultChecked={()=> {this.setState({country:"UAE"})}} onClick={(e)=>{this.setState({country:e.target.value})}} /> UAE National
+                            <input type="radio" id="2" name="country" value="Other" defaultChecked={()=> {this.setState({country:"Other"})}} onClick={(e)=>{this.setState({country:e.target.value})}}/> Other <br />
 
                             <input name="country2" id="country" type="text" required placeholder="Enter your country " onChange={(e)=>{this.setState({country2:e.target.value})}} /><br />      
                              <br/>

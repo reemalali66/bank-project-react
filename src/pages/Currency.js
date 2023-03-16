@@ -1,4 +1,65 @@
-function Currency(){
+import React from 'react';
+
+class Currency extends React.Component{
+    state={
+        amount:'',
+        convertFrom:'',
+        convertTo:'',
+        aedAmount:'',
+        usdAmount:'',
+        inrAmount:''
+    }
+
+    Currency = ()=> {
+        if(this.state.convertFrom=="AED" && this.state.convertTo=="AED"){
+            this.setState({
+                aedAmount: this.state.amount
+            });
+        }
+        else if (this.state.convertFrom=="AED" && this.state.convertTo=="USD"){
+            this.setState({
+                usdAmount: this.state.amount * 3.67
+            });
+        }
+        else if (this.state.convertFrom=="AED" && this.state.convertTo=="INR"){
+                this.setState({
+                    inrAmount: this.state.amount * 22.5
+                });  
+       }
+       else if (this.state.convertFrom=="USD" && this.state.convertTo=="USD"){
+        this.setState({
+            usdAmount: this.state.amount 
+        });  
+        }
+        else if (this.state.convertFrom=="USD" && this.state.convertTo=="AED"){
+            this.setState({
+                usdAmount: this.state.amount / 3.67
+            });  
+            }
+        else if (this.state.convertFrom=="USD" && this.state.convertTo=="INR"){
+                this.setState({
+                    usdAmount: this.state.amount * 82.7
+             });  
+             }
+
+
+        else if (this.state.convertFrom=="INR" && this.state.convertTo=="INR"){
+            this.setState({
+                inrAmount: this.state.amount 
+            });  
+            }
+         else if (this.state.convertFrom=="INR" && this.state.convertTo=="AED"){
+                this.setState({
+                    inrAmount: this.state.amount / 22.5 
+                });  
+                }
+         else if (this.state.convertFrom=="INR" && this.state.convertTo=="USD"){
+                    this.setState({
+                        inrAmount: this.state.amount / 82.7
+                    });  
+                    }
+    }
+render(){
     return(
 <div id="Camount">
                     <div id="currencyLeft">
@@ -9,14 +70,14 @@ function Currency(){
                         <h3>Foreign Exchange currency Converter</h3>
                         <label for="currency">Enter Amount </label>
                         <br/>
-                        <input id="currency" name="currency" type="text"  placeholder="Amount" required/> 
+                        <input id="currency" name="currency" type="text"  placeholder='Enter value in AED' onChange={(e)=>{this.setState({amount:e.target.value})}} required/> 
                         <br/>
                         <br/><br/>
                         <label>From </label><br/>
-                        <select>
-                                <option>AED</option>
-                                <option>USD</option>
-                                <option>INR</option>
+                        <select onChange={(e)=>{this.setState({convertFrom:e.target.value})}}>
+                                <option value="AED">AED</option>
+                                <option value="USD">USD</option>
+                                <option value="INR">INR</option>
                         </select>
                         <br/><br/>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
@@ -24,13 +85,13 @@ function Currency(){
                         </svg>
                         <br/><br/>
                         <label>To </label><br/>
-                        <select>
-                                <option>AED</option>
-                                <option>USD</option>
-                                <option>INR</option>
+                        <select onChange={(e)=>{this.setState({convertTo:e.target.value})}}>
+                                <option value="AED">AED</option>
+                                <option value="USD">USD</option>
+                                <option value="INR">INR</option>
                         </select>
                         <br/><br/><br/>
-                        <button> Convert </button>
+                        <button  onClick={this.Currency}> Convert </button>
                         <br/>
                         <br/>
                         <br/>
@@ -38,11 +99,12 @@ function Currency(){
                         <br/>
                     </div>
                     <div > 
-                        <h2 id="h2Currency"></h2>
+                        <h2 > {this.state.convertTo=="AED" && this.state.convertTo=="AED" ? this.state.aedAmount : this.state.convertTo=="USD"? this.state.usdAmount : this.state.inrAmount}</h2>
                     </div>
 
 
                 </div>
     );
+}
 }
 export default Currency;
