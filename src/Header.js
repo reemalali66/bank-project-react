@@ -11,7 +11,6 @@ function Header(){
             <a href=""> CORPORATE </a>
             <a href=""> TREASURY </a>
             <a href=""> ISLAMIC </a>
-            <Link to ='/dashboard'><a href=""> DB</a></Link> 
           
             
            
