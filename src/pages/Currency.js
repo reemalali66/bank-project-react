@@ -3,59 +3,57 @@ import React from 'react';
 class Currency extends React.Component{
     state={
         amount:'',
-        convertFrom:'',
-        convertTo:'',
-        aedAmount:'',
-        usdAmount:'',
-        inrAmount:''
+        convertFrom:'AED',
+        convertTo:'AED',
+        conAmount:'',
     }
 
     Currency = ()=> {
         if(this.state.convertFrom=="AED" && this.state.convertTo=="AED"){
             this.setState({
-                aedAmount: this.state.amount
+                conAmount: this.state.amount
             });
         }
         else if (this.state.convertFrom=="AED" && this.state.convertTo=="USD"){
             this.setState({
-                usdAmount: this.state.amount * 3.67
+                conAmount: this.state.amount / 3.67
             });
         }
         else if (this.state.convertFrom=="AED" && this.state.convertTo=="INR"){
                 this.setState({
-                    inrAmount: this.state.amount * 22.5
+                    conAmount: this.state.amount * 22.5
                 });  
        }
        else if (this.state.convertFrom=="USD" && this.state.convertTo=="USD"){
         this.setState({
-            usdAmount: this.state.amount 
+            conAmount: this.state.amount 
         });  
         }
         else if (this.state.convertFrom=="USD" && this.state.convertTo=="AED"){
             this.setState({
-                usdAmount: this.state.amount / 3.67
+                conAmount: this.state.amount * 3.67
             });  
             }
         else if (this.state.convertFrom=="USD" && this.state.convertTo=="INR"){
                 this.setState({
-                    usdAmount: this.state.amount * 82.7
+                    conAmount: this.state.amount * 82.7
              });  
              }
 
 
         else if (this.state.convertFrom=="INR" && this.state.convertTo=="INR"){
             this.setState({
-                inrAmount: this.state.amount 
+                conAmount: this.state.amount 
             });  
             }
          else if (this.state.convertFrom=="INR" && this.state.convertTo=="AED"){
                 this.setState({
-                    inrAmount: this.state.amount / 22.5 
+                    conAmount: this.state.amount / 22.5 
                 });  
                 }
          else if (this.state.convertFrom=="INR" && this.state.convertTo=="USD"){
                     this.setState({
-                        inrAmount: this.state.amount / 82.7
+                        conAmount: this.state.amount / 82.7
                     });  
                     }
     }
@@ -99,7 +97,21 @@ render(){
                         <br/>
                     </div>
                     <div > 
-                        <h2 > {this.state.convertTo=="AED" && this.state.convertTo=="AED" ? this.state.aedAmount : this.state.convertTo=="USD"? this.state.usdAmount : this.state.inrAmount}</h2>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <h2 id="currAmount"> {this.state.conAmount}</h2>
                     </div>
 
 
